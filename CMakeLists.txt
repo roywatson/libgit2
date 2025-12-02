@@ -19,7 +19,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 option(EXPERIMENTAL_SHA256     "Enable experimental SHA256 support (for R&D/testing)"  OFF)
 
 # Optional subsystems
-option(BUILD_SHARED_LIBS       "Build Shared Library (OFF for Static)"                  ON)
+option(BUILD_SHARED_LIBS       "Build Shared Library (OFF for Static)"                 OFF)
 option(BUILD_TESTS             "Build Tests using the Clar suite"                       ON)
 option(BUILD_CLI               "Build the command-line interface"                       ON)
 option(BUILD_EXAMPLES          "Build library usage example apps"                      OFF)
@@ -42,6 +42,7 @@ option(BUILD_FUZZERS           "Build the fuzz targets"                         
 if(APPLE)
 	# Currently only available on macOS for `precomposeUnicode` support
 	set(USE_I18N            "" CACHE STRING "Enables internationalization support.")
+	set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "Minimum OS X deployment version" FORCE)	
 endif()
 
 # Debugging options
